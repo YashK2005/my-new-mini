@@ -17,4 +17,13 @@ export const homeScreenStyles = StyleSheet.create({
     height: 230,
     borderRadius: 16, 
   },
+  openPackButton: {
+    backgroundColor: '#000000',
+    paddingVertical: 12,
+    paddingHorizontal: 24,
+    borderRadius: 8,
+    width: 340,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
 })
