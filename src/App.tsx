@@ -2,6 +2,8 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack'
 
 import {HomeScreen} from './screens/HomeScreen'
 import {ShareScreen} from './screens/ShareScreen'
+import {CollectionScreen} from './screens/CollectionScreen'
+
 const Stack = createNativeStackNavigator()
 
 export function App() {
@@ -15,6 +17,11 @@ export function App() {
       <Stack.Screen
         name="Share"
         component={ShareScreen}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="Collection"
+        component={CollectionScreen}
         options={{headerShown: false}}
       />
     </Stack.Navigator>
