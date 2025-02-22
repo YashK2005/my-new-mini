@@ -1,0 +1,7 @@
+{
+  "name": "my-new-mini",
+  "features": [
+    "FULL_BLEED_VIEWER",
+    "STANDALONE"
+  ]
+}
