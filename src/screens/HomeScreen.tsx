@@ -18,10 +18,12 @@ import binder from '../assets/binder.jpg'
 import social from '../assets/social.jpg'
 
 import {FeatureSection} from '../components/FeatureSection'
+import {homeScreenStyles as styles} from './styles/home-screen.styles'
 
 export function HomeScreen() {
   const theme = useTheme()
-  const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>()
+  const navigation =
+    useNavigation<NativeStackNavigationProp<RootStackParamList>>()
 
   const features = [
     {
@@ -32,12 +34,12 @@ export function HomeScreen() {
     {
       image: binder,
       title: 'Shopidex',
-      onPress: () => {}, // edit later
+      onPress: () => navigation.navigate('Collection'),
     },
     {
       image: social,
       title: 'Share',
-      onPress: () => navigation.navigate('Share'), // edit later
+      onPress: () => navigation.navigate('Share'),
     }
   ]
 
@@ -50,13 +52,11 @@ export function HomeScreen() {
         indicatorStyle="black"
       >
         <Box flex={1} justifyContent="center" alignItems="center">
-
           <Box width="100%" paddingHorizontal="xl" marginTop="xs-s" marginBottom="xs-s" justifyContent="center" alignItems="center">
             <Text variant="headerBold" color="foregrounds-regular">
               Welcome to ShoPacks!
             </Text>
           </Box> 
-
          
           {features.map((feature, _) => (
             <Box key={feature.title}>
