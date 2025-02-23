@@ -1,5 +1,5 @@
 import {useState} from 'react'
-import {ScrollView, StyleSheet} from 'react-native'
+import {ScrollView} from 'react-native'
 import {useNavigation} from '@react-navigation/native'
 import {NativeStackNavigationProp} from '@react-navigation/native-stack'
 import {
@@ -109,7 +109,7 @@ export function HomeScreen() {
           </PressableAnimated>
           
           <PressableAnimated
-            onPress={() => {}}
+            onPress={() => navigation.navigate('Share')}
             hapticOnPress
             bounceOnPress
             style={styles.openPackButton}
