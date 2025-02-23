@@ -25,5 +25,6 @@ export const homeScreenStyles = StyleSheet.create({
     width: 340,
     alignItems: 'center',
     justifyContent: 'center',
+    marginBottom: 10,
   },
 })

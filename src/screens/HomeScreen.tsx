@@ -9,9 +9,7 @@ import {
   PressableAnimated,
   useTheme,
   Image,
-  Avatar,
   Divider,
-  Badge,
 } from '@shopify/shop-minis-platform-sdk'
 
 import {RootStackParamList} from '../types/screens'
@@ -28,8 +26,22 @@ export function HomeScreen() {
     <SafeAreaView
       style={{flex: 1, backgroundColor: theme.colors['backgrounds-regular']}}
     >
-      <ScrollView>
+      <ScrollView
+        showsVerticalScrollIndicator={true}
+        indicatorStyle="black"
+      >
         <Box flex={1} justifyContent="center" alignItems="center">
+
+          <Box width="100%" paddingHorizontal="xl" marginTop="xs-s" marginBottom="xs-s" justifyContent="center" alignItems="center">
+            <Text variant="headerBold" color="foregrounds-regular">
+              Welcome to ShoPacks!
+            </Text>
+          </Box> 
+
+          <Box width="100%" paddingHorizontal="xl">
+            <Divider />
+          </Box>
+          
           <PressableAnimated
             onPress={() => {}}
             style={styles.packButton}
@@ -53,7 +65,7 @@ export function HomeScreen() {
             </Text>
           </PressableAnimated>
 
-          <Box width="100%" paddingHorizontal="xl" marginTop="s" marginBottom="s">
+          <Box width="100%" paddingHorizontal="xl">
             <Divider />
           </Box>
 
@@ -76,12 +88,12 @@ export function HomeScreen() {
             style={styles.openPackButton}
           >
             <Text variant="bodyLargeBold" color="badge-text-light">
-              Check Collection
+              Shopidex
             </Text>
           </PressableAnimated>
 
-          <Box width="100%" paddingHorizontal="xl" marginTop="s" marginBottom="s">
-            <Divider />
+          <Box width="100%" paddingHorizontal="xl">
+            <Divider/>
           </Box>
 
           <PressableAnimated
@@ -103,7 +115,7 @@ export function HomeScreen() {
             style={styles.openPackButton}
           >
             <Text variant="bodyLargeBold" color="badge-text-light">
-              Share Collection
+              Share
             </Text>
           </PressableAnimated>
         </Box>  
