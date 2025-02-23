@@ -80,4 +80,33 @@ export const shareScreenStyles = StyleSheet.create({
         borderRadius: 8,
         alignItems: 'center',
     },
+    tradeContainer: {
+        backgroundColor: '#F5F5F5',
+        borderRadius: 8,
+        padding: 16,
+        marginBottom: 20,
+    },
+    productSection: {
+        marginBottom: 16,
+    },
+    exchangeIcon: {
+        alignItems: 'center',
+        marginVertical: 8,
+    },
+    messageInput: {
+        marginBottom: 20,
+    },
+    notificationsContainer: {
+        flex: 1,
+    },
+    emptyState: {
+        flex: 1,
+        minHeight: 200,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    emptyStateText: {
+        marginTop: 12,
+        textAlign: 'center',
+    },
 })

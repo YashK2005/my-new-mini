@@ -1,5 +1,7 @@
 import {Box, Text, PressableAnimated, Image} from '@shopify/shop-minis-platform-sdk'
 import {shareScreenStyles as styles} from '../screens/styles/share-screen.styles'
+import {useState} from 'react'
+import {TradeModal} from './TradeModal'
 
 interface PostCardProps {
     username: string
@@ -10,6 +12,12 @@ interface PostCardProps {
 }
 
 export function PostCard({username, message, cardImage, cardName, onPress}: PostCardProps) {
+    const [isTradeModalVisible, setIsTradeModalVisible] = useState(false)
+
+    const handleTradeSubmit = (message: string) => {
+        setIsTradeModalVisible(false)
+    }
+
     return (
         <Box style={styles.container}>
             <Box flexDirection="row" alignItems="center" marginBottom="xs">
@@ -28,13 +36,23 @@ export function PostCard({username, message, cardImage, cardName, onPress}: Post
                 </Box>
 
                 <PressableAnimated
-                    onPress={onPress}
+                    onPress={() => setIsTradeModalVisible(true)}
                     hapticOnPress
                     bounceOnPress
                     style={styles.tradeButton}
                 >
                     <Text variant="bodySmallBold" color="badge-text-light">Trade</Text>
                 </PressableAnimated>
+
+                <TradeModal
+                    isVisible={isTradeModalVisible}
+                    onClose={() => setIsTradeModalVisible(false)}
+                    onSubmit={handleTradeSubmit}
+                    theirProduct={{
+                        name: cardName,
+                        image: cardImage,
+                    }}
+                />
             </Box>
         </Box>
     )
