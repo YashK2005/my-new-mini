@@ -6,9 +6,7 @@ import {
   Box,
   SafeAreaView,
   Text,
-  PressableAnimated,
   useTheme,
-  Image,
   Divider,
 } from '@shopify/shop-minis-platform-sdk'
 
@@ -18,7 +16,6 @@ import binder from '../assets/binder.jpg'
 import social from '../assets/social.jpg'
 
 import {FeatureSection} from '../components/FeatureSection'
-import {homeScreenStyles as styles} from './styles/home-screen.styles'
 
 export function HomeScreen() {
   const theme = useTheme()

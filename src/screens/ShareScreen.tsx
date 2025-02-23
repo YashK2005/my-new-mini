@@ -39,10 +39,10 @@ export function ShareScreen() {
                 }}
             >
                 <IconButton
-                    name="share"
+                    name="add"
                     size="xl"
                     onPress={() => {}}
-                    accessibilityLabel="Share"
+                    accessibilityLabel="Add"
                 />
             </PressableAnimated>
     </SafeAreaView>
