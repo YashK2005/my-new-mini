@@ -13,14 +13,33 @@ import {
 } from '@shopify/shop-minis-platform-sdk'
 
 import {RootStackParamList} from '../types/screens'
-import { homeScreenStyles as styles } from './styles/home-screen.styles'
 import pack from '../assets/packs.jpg'
 import binder from '../assets/binder.jpg'
 import social from '../assets/social.jpg'
 
+import {FeatureSection} from '../components/FeatureSection'
+
 export function HomeScreen() {
   const theme = useTheme()
   const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>()
+
+  const features = [
+    {
+      image: pack,
+      title: 'Open Pack',
+      onPress: () => {}, // edit later
+    },
+    {
+      image: binder,
+      title: 'Shopidex',
+      onPress: () => {}, // edit later
+    },
+    {
+      image: social,
+      title: 'Share',
+      onPress: () => navigation.navigate('Share'), // edit later
+    }
+  ]
 
   return (
     <SafeAreaView
@@ -38,86 +57,19 @@ export function HomeScreen() {
             </Text>
           </Box> 
 
-          <Box width="100%" paddingHorizontal="xl">
-            <Divider />
-          </Box>
-          
-          <PressableAnimated
-            onPress={() => {}}
-            style={styles.packButton}
-            opacityOnPress
-          >
-            <Image
-              source={pack}
-              style={styles.packImage}
-              resizeMode="contain"
-            />
-          </PressableAnimated>
-          
-          <PressableAnimated
-            onPress={() => {}}
-            hapticOnPress
-            bounceOnPress
-            style={styles.openPackButton}
-          >
-            <Text variant="bodyLargeBold" color="badge-text-light">
-              Open Pack
-            </Text>
-          </PressableAnimated>
-
-          <Box width="100%" paddingHorizontal="xl">
-            <Divider />
-          </Box>
-
-          <PressableAnimated
-            onPress={() => {}}
-            style={styles.packButton}
-            opacityOnPress
-          >
-            <Image
-              source={binder}
-              style={styles.packImage}
-              resizeMode="contain"
-            />
-          </PressableAnimated>
-          
-          <PressableAnimated
-            onPress={() => {}}
-            hapticOnPress
-            bounceOnPress
-            style={styles.openPackButton}
-          >
-            <Text variant="bodyLargeBold" color="badge-text-light">
-              Shopidex
-            </Text>
-          </PressableAnimated>
-
-          <Box width="100%" paddingHorizontal="xl">
-            <Divider/>
-          </Box>
-
-          <PressableAnimated
-            onPress={() => {}}
-            style={styles.packButton}
-            opacityOnPress
-          >
-            <Image
-              source={social}
-              style={styles.packImage}
-              resizeMode="contain"
-            />
-          </PressableAnimated>
-          
-          <PressableAnimated
-            onPress={() => navigation.navigate('Share')}
-            hapticOnPress
-            bounceOnPress
-            style={styles.openPackButton}
-          >
-            <Text variant="bodyLargeBold" color="badge-text-light">
-              Share
-            </Text>
-          </PressableAnimated>
+         
+          {features.map((feature, _) => (
+            <Box key={feature.title}>
+              <Box width="100%" paddingHorizontal="xl">
+                <Divider />
+              </Box>
+              <FeatureSection
+                image={feature.image}
+                title={feature.title}
+                onPress={feature.onPress}
+              />
+            </Box>
+          ))}
         </Box>  
       </ScrollView>
     </SafeAreaView>
