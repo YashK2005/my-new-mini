@@ -4,4 +4,5 @@ export interface RootStackParamList extends ParamListBase {
   'GettingStarted.Home': undefined
   'Share': undefined
   'Collection': undefined
+  'PackOpening': undefined
 }
