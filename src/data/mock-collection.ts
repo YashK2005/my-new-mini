@@ -12,17 +12,21 @@ export const mockCollectionCards: ProductCard[] = [
     category: 'gaming',
     rarity: 'rare',
     isCollected: true,
+    price: '$129.99',
+    description: 'Professional gaming headset with 7.1 surround sound, RGB lighting, and memory foam ear cushions.',
   },
   {
     id: '2',
     title: 'RGB Gaming Mouse',
-    image: 'https://cdn.shopify.com/s/files/1/0657/1809/2035/files/S30d55e9a7421425aa5a4c68851e53433f.webp?v=1735031147&width=1500',
-    productId: 'gid://shopify/Product/8643450175747',
+    image: 'https://cdn.shopify.com/example/mouse.jpg',
+    productId: 'gid://shopify/Product/2',
     shopId: 'gid://shopify/Shop/2',
     shopName: 'RazerGear',
     category: 'gaming',
     rarity: 'common',
     isCollected: true,
+    price: '$79.99',
+    description: 'High-precision gaming mouse with 20K DPI sensor and customizable RGB lighting.',
   },
   {
     id: '3',
@@ -34,6 +38,8 @@ export const mockCollectionCards: ProductCard[] = [
     category: 'gaming',
     rarity: 'ultra-rare',
     isCollected: false,
+    price: '$199.99',
+    description: 'Premium mechanical keyboard with Cherry MX switches and aluminum frame.',
   },
   // Music Category
   {
@@ -46,6 +52,8 @@ export const mockCollectionCards: ProductCard[] = [
     category: 'music',
     rarity: 'common',
     isCollected: true,
+    price: '$149.99',
+    description: 'True wireless earbuds with active noise cancellation and 24-hour battery life.',
   },
   {
     id: '5',
@@ -57,6 +65,8 @@ export const mockCollectionCards: ProductCard[] = [
     category: 'music',
     rarity: 'ultra-rare',
     isCollected: false,
+    price: '$299.99',
+    description: 'Classic turntable with built-in speakers and Bluetooth connectivity.',
   },
   {
     id: '6',
@@ -68,6 +78,8 @@ export const mockCollectionCards: ProductCard[] = [
     category: 'music',
     rarity: 'rare',
     isCollected: true,
+    price: '$249.99',
+    description: 'Professional condenser microphone for studio recording and streaming.',
   },
   // Clothing Category
   {
@@ -80,6 +92,8 @@ export const mockCollectionCards: ProductCard[] = [
     category: 'clothing',
     rarity: 'ultra-rare',
     isCollected: true,
+    price: '$399.99',
+    description: 'Exclusive collector\'s edition sneakers with custom design.',
   },
   {
     id: '8',
@@ -91,6 +105,8 @@ export const mockCollectionCards: ProductCard[] = [
     category: 'clothing',
     rarity: 'common',
     isCollected: false,
+    price: '$89.99',
+    description: 'Premium cotton hoodie with embroidered logo and kangaroo pocket.',
   },
   {
     id: '9',
@@ -102,5 +118,7 @@ export const mockCollectionCards: ProductCard[] = [
     category: 'clothing',
     rarity: 'rare',
     isCollected: true,
+    price: '$159.99',
+    description: 'Classic denim jacket with distressed finish and custom patches.',
   }
 ] 

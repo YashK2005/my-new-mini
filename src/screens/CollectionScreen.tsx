@@ -7,17 +7,20 @@ import {
   TouchableOpacity,
   ScrollView,
   Modal,
-  Dimensions,
 } from 'react-native'
-import {SafeAreaView, useShopNavigation} from '@shopify/shop-minis-platform-sdk'
+import {
+  SafeAreaView,
+  useShopNavigation,
+  useMinisDimensions,
+} from '@shopify/shop-minis-platform-sdk'
 import {useNavigation} from '@react-navigation/native'
 import {ProductCard} from '../types/collection'
 import {mockCollectionCards} from '../data/mock-collection'
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome'
 import {faGamepad, faHeadphones, faShirt} from '@fortawesome/free-solid-svg-icons'
 
-// Get screen dimensions
-const {height} = Dimensions.get('window')
+// Remove the Dimensions import and replace with SDK hook
+const {height} = useMinisDimensions()
 
 interface CategoryHeaderProps {
   title: string
@@ -116,7 +119,7 @@ const CategorySection = ({
 
 export function CollectionScreen() {
   const navigation = useNavigation()
-  const {navigateToProduct, navigateToShop} = useShopNavigation()
+  const {navigateToProduct} = useShopNavigation()
   const [selectedCard, setSelectedCard] = useState<ProductCard | null>(null)
 
   // Mock data with collected and uncollected cards
@@ -163,59 +166,54 @@ export function CollectionScreen() {
 
       <Modal
         visible={!!selectedCard}
-        animationType="slide"
-        transparent={true}
+        transparent
+        animationType="fade"
         onRequestClose={() => setSelectedCard(null)}
       >
-        {selectedCard && (
-          <View style={styles.modalContainer}>
-            <View style={styles.modalContent}>
+        <TouchableOpacity 
+          style={styles.modalContainer} 
+          activeOpacity={1}
+          onPress={() => setSelectedCard(null)}
+        >
+          <TouchableOpacity 
+            style={styles.cardModal}
+            activeOpacity={1}
+            onPress={(e) => e.stopPropagation()}
+          >
+            <View style={styles.cardModalHeader}>
               <Image
-                source={{uri: selectedCard.image}}
-                style={styles.modalImage}
+                source={require('../assets/shopify-logo.png')}
+                style={styles.shopifyLogo}
                 resizeMode="contain"
               />
-              <View style={styles.modalInfo}>
-                <Text style={styles.modalTitle}>{selectedCard.title}</Text>
-                <Text style={styles.modalSubtitle}>
-                  {selectedCard.category} • {selectedCard.rarity}
-                </Text>
-                
-                <View style={styles.buttonContainer}>
+            </View>
+            
+            {selectedCard && (
+              <>
+                <Image
+                  source={{uri: selectedCard.image}}
+                  style={styles.cardModalImage}
+                  resizeMode="contain"
+                />
+                <View style={styles.cardModalInfo}>
+                  <Text style={styles.cardModalTitle}>{selectedCard.title}</Text>
+                  <Text style={styles.cardModalDescription}>{selectedCard.description}</Text>
+                  <Text style={styles.cardModalPrice}>{selectedCard.price}</Text>
+                  
                   <TouchableOpacity
                     onPress={() => {
                       navigateToProduct({productId: selectedCard.productId})
                       setSelectedCard(null)
                     }}
-                    style={styles.button}
+                    style={styles.cardModalButton}
                   >
-                    <Text style={styles.buttonText}>View Product</Text>
-                  </TouchableOpacity>
-                  
-                  <TouchableOpacity
-                    onPress={() => {
-                      navigateToShop({
-                        shopId: selectedCard.productId,
-                        shopName: selectedCard.shopName,
-                      })
-                      setSelectedCard(null)
-                    }}
-                    style={styles.button}
-                  >
-                    <Text style={styles.buttonText}>Visit Store</Text>
+                    <Text style={styles.cardModalButtonText}>View Product</Text>
                   </TouchableOpacity>
                 </View>
-
-                <TouchableOpacity
-                  onPress={() => setSelectedCard(null)}
-                  style={styles.closeButton}
-                >
-                  <Text style={styles.buttonText}>Close</Text>
-                </TouchableOpacity>
-              </View>
-            </View>
-          </View>
-        )}
+              </>
+            )}
+          </TouchableOpacity>
+        </TouchableOpacity>
       </Modal>
     </SafeAreaView>
   )
@@ -300,53 +298,59 @@ const styles = StyleSheet.create({
   },
   modalContainer: {
     flex: 1,
-    backgroundColor: 'rgba(0,0,0,0.5)',
-    justifyContent: 'flex-end',
+    backgroundColor: 'rgba(0, 0, 0, 0.7)',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
-  modalContent: {
-    backgroundColor: '#FFFFFF',
-    borderTopLeftRadius: 20,
-    borderTopRightRadius: 20,
-    padding: 20,
+  cardModal: {
+    width: '85%',
+    backgroundColor: 'white',
+    borderRadius: 16,
+    overflow: 'hidden',
     maxHeight: '80%',
   },
-  modalImage: {
+  cardModalHeader: {
+    alignItems: 'flex-start',
+    paddingVertical: 8,
+    paddingHorizontal: 16,
+    borderBottomWidth: 1,
+    borderBottomColor: '#EEEEEE',
+    backgroundColor: '#FFFFFF',
+  },
+  shopifyLogo: {
+    width: 100,
+    height: 28,
+  },
+  cardModalImage: {
     width: '100%',
     height: 300,
-    marginBottom: 16,
+    backgroundColor: '#F5F5F5',
   },
-  modalInfo: {
-    paddingHorizontal: 16,
+  cardModalInfo: {
+    padding: 16,
   },
-  modalTitle: {
-    fontSize: 24,
+  cardModalTitle: {
+    fontSize: 20,
     fontWeight: 'bold',
     marginBottom: 8,
   },
-  modalSubtitle: {
+  cardModalDescription: {
     fontSize: 16,
     color: '#666666',
+    marginBottom: 12,
+  },
+  cardModalPrice: {
+    fontSize: 18,
+    fontWeight: '600',
     marginBottom: 16,
   },
-  buttonContainer: {
-    flexDirection: 'row',
-    gap: 8,
-    marginBottom: 16,
-  },
-  button: {
-    flex: 1,
-    backgroundColor: '#000000',
-    padding: 12,
+  cardModalButton: {
+    backgroundColor: '#008060',
+    padding: 16,
     borderRadius: 8,
     alignItems: 'center',
   },
-  closeButton: {
-    backgroundColor: '#666666',
-    padding: 12,
-    borderRadius: 8,
-    alignItems: 'center',
-  },
-  buttonText: {
+  cardModalButtonText: {
     color: '#FFFFFF',
     fontSize: 16,
     fontWeight: '500',

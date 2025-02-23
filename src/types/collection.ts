@@ -8,4 +8,6 @@ export interface ProductCard {
   category: 'music' | 'gaming' | 'clothing'
   rarity: 'common' | 'rare' | 'ultra-rare'
   isCollected: boolean
+  price: string
+  description: string
 }
