@@ -1,5 +1,4 @@
 import {Box, Text, PressableAnimated, Image} from '@shopify/shop-minis-platform-sdk'
-import {ImageRequireSource} from 'react-native'
 import {shareScreenStyles as styles} from '../screens/styles/share-screen.styles'
 
 interface PostCardProps {

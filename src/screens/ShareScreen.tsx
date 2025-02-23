@@ -13,6 +13,7 @@ import {ScrollView, FlatList} from 'react-native'
 import {PostCard} from '../components/PostCard'
 import {useState, useMemo} from 'react'
 import {shareScreenStyles as styles} from './styles/share-screen.styles'
+import {AddPostModal} from '../components/AddPostModal'
 
 const MOCK_POSTS = [
     {
@@ -56,42 +57,61 @@ export function ShareScreen() {
   const theme = useTheme()
   const navigation = useNavigation()
   const [searchQuery, setSearchQuery] = useState('')
+  const [isModalVisible, setIsModalVisible] = useState(false)
+  const [posts, setPosts] = useState(MOCK_POSTS)
 
   const filteredPosts = useMemo(() => {
-    return MOCK_POSTS.filter(post => 
+    return posts.filter(post => 
         post.username.toLowerCase().includes(searchQuery.toLowerCase()) ||
         post.message.toLowerCase().includes(searchQuery.toLowerCase()) ||
         post.cardName.toLowerCase().includes(searchQuery.toLowerCase())
     )
-  }, [searchQuery])
+  }, [searchQuery, posts])
 
   const handleSearch = (text: string) => {
     setSearchQuery(text)
   }
 
+  const handleAddPost = () => {
+    setIsModalVisible(true)
+  }
+
+  const handleSubmitPost = (message: string, cardImage: string, cardName: string) => {
+    const newPost =  {
+        id: `${posts.length + 1}`,
+        username: 'Demo',
+        message,
+        cardImage,
+        cardName,
+    }
+
+    setPosts(prevPosts => [newPost, ...prevPosts])
+    setIsModalVisible(false)
+  }
+  
   return (
     <SafeAreaView style={{flex: 1, backgroundColor: theme.colors['backgrounds-regular']}}>
-            <Box flexDirection="row" padding="m" paddingBottom="xs" alignItems="center" justifyContent="space-between">
-                    <IconButton
-                    name="arrow-left"
+        <Box flexDirection="row" padding="m" paddingBottom="xs" alignItems="center" justifyContent="space-between">
+            <IconButton
+                name="arrow-left"
+                size="m"
+                onPress={() => navigation.goBack()}
+                accessibilityLabel="Go back"
+            />
+            <Text variant="headerBold" marginLeft="m">Share</Text>
+            <PressableAnimated
+                onPress={handleAddPost}
+                hapticOnPress
+                bounceOnPress
+            >
+                <IconButton
+                    name="add"
                     size="m"
-                    onPress={() => navigation.goBack()}
-                    accessibilityLabel="Go back"
-                    />
-                    <Text variant="headerBold" marginLeft="m">Share</Text>
-                    <PressableAnimated
-                        onPress={() => {}}
-                        hapticOnPress
-                        bounceOnPress
-                    >
-                        <IconButton
-                            name="add"
-                            size="m"
-                            onPress={() => {}}
-                            accessibilityLabel="Add"
-                        />
-                    </PressableAnimated>
-            </Box>
+                    onPress={handleAddPost}
+                    accessibilityLabel="Add"
+                />
+            </PressableAnimated>
+        </Box>
 
         <Box padding="m" paddingTop="xs">
             <TextField
@@ -121,6 +141,12 @@ export function ShareScreen() {
                     </Text>
                 </Box>
             )}
+        />
+
+        <AddPostModal
+            isVisible={isModalVisible}
+            onClose={() => setIsModalVisible(false)}
+            onSubmit={handleSubmitPost}
         />
     </SafeAreaView>
   )
