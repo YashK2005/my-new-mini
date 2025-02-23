@@ -3,10 +3,7 @@ export interface ProductCard {
   title: string
   image: string
   productId: string
-  shopId: string
-  shopName: string
   category: 'music' | 'gaming' | 'clothing'
-  rarity: 'common' | 'rare' | 'ultra-rare'
   isCollected: boolean
   price: string
   description: string

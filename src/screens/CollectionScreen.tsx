@@ -1,6 +1,5 @@
 import {useState} from 'react'
 import {
-  StyleSheet,
   View,
   Text,
   Image,
@@ -11,23 +10,23 @@ import {
 import {
   SafeAreaView,
   useShopNavigation,
-  useMinisDimensions,
 } from '@shopify/shop-minis-platform-sdk'
 import {useNavigation} from '@react-navigation/native'
 import {ProductCard} from '../types/collection'
 import {mockCollectionCards} from '../data/mock-collection'
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome'
 import {faGamepad, faHeadphones, faShirt} from '@fortawesome/free-solid-svg-icons'
+import {collectionScreenStyles as styles} from './styles/collection-screen.styles'
 
-// Remove the Dimensions import and replace with SDK hook
-const {height} = useMinisDimensions()
 
 interface CategoryHeaderProps {
   title: string
   color: string
+  collectedCount: number
+  totalCount: number
 }
 
-const CategoryHeader = ({title, color}: CategoryHeaderProps) => {
+const CategoryHeader = ({title, color, collectedCount, totalCount}: CategoryHeaderProps) => {
   const getIcon = () => {
     switch (title) {
       case 'Gaming':
@@ -43,8 +42,13 @@ const CategoryHeader = ({title, color}: CategoryHeaderProps) => {
 
   return (
     <View style={[styles.categoryHeader, {backgroundColor: color}]}>
-      <FontAwesomeIcon icon={getIcon()} size={20} color="#FFFFFF" />
-      <Text style={styles.categoryHeaderText}>{title}</Text>
+      <View style={styles.categoryHeaderLeft}>
+        <FontAwesomeIcon icon={getIcon()} size={20} color="#FFFFFF" />
+        <Text style={styles.categoryHeaderText}>{title}</Text>
+      </View>
+      <Text style={styles.categoryHeaderCounter}>
+        {collectedCount}/{totalCount}
+      </Text>
     </View>
   )
 }
@@ -58,27 +62,38 @@ const CategorySection = ({
   cards: ProductCard[]
   onCardPress: (card: ProductCard) => void
 }) => {
+  const collectedCount = cards.filter(card => card.isCollected).length
+  const totalCount = cards.length
+
   const getCategoryProps = (title: string): CategoryHeaderProps => {
     switch (title) {
       case 'Gaming':
         return {
           title,
           color: '#FF6B6B',
+          collectedCount,
+          totalCount,
         }
       case 'Music':
         return {
           title,
           color: '#4ECDC4',
+          collectedCount,
+          totalCount,
         }
       case 'Clothing':
         return {
           title,
           color: '#45B7D1',
+          collectedCount,
+          totalCount,
         }
       default:
         return {
           title,
           color: '#666666',
+          collectedCount,
+          totalCount,
         }
     }
   }
@@ -131,16 +146,27 @@ export function CollectionScreen() {
     clothing: allCards.filter(card => card.category === 'clothing'),
   }
 
+  const totalCollected = Object.values(cardsByCategory)
+    .flat()
+    .filter(card => card.isCollected).length
+  
+  const totalCards = Object.values(cardsByCategory).flat().length
+
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.header}>
-        <TouchableOpacity 
-          onPress={() => navigation.goBack()}
-          style={styles.backButton}
-        >
-          <Text style={styles.backButtonText}>←</Text>
-        </TouchableOpacity>
-        <Text style={styles.headerText}>Shopidex</Text>
+        <View style={styles.headerLeft}>
+          <TouchableOpacity 
+            onPress={() => navigation.goBack()}
+            style={styles.backButton}
+          >
+            <Text style={styles.backButtonText}>←</Text>
+          </TouchableOpacity>
+          <Text style={styles.headerText}>Shopidex</Text>
+        </View>
+        <Text style={styles.headerCounter}>
+          {totalCollected}/{totalCards}
+        </Text>
       </View>
 
       <ScrollView 
@@ -218,141 +244,3 @@ export function CollectionScreen() {
     </SafeAreaView>
   )
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#FFFFFF',
-  },
-  header: {
-    padding: 12,
-    flexDirection: 'row',
-    alignItems: 'center',
-    height: height * 0.06,
-  },
-  backButton: {
-    marginRight: 16,
-  },
-  backButtonText: {
-    fontSize: 24,
-  },
-  headerText: {
-    fontSize: 24,
-    fontWeight: 'bold',
-  },
-  contentContainer: {
-    height: height * 0.94,
-    paddingBottom: 16,
-  },
-  categorySection: {
-    height: height * 0.25,
-    marginTop: 8,
-  },
-  categoryHeaderContainer: {
-    paddingTop: 0,
-    paddingBottom: 8,
-  },
-  categoryHeader: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    paddingVertical: 8,
-    paddingHorizontal: 16,
-    borderRadius: 20,
-    marginHorizontal: 16,
-  },
-  categoryHeaderText: {
-    fontSize: 20,
-    fontWeight: 'bold',
-    color: '#FFFFFF',
-    marginLeft: 12,
-  },
-  cardsRow: {
-    flexDirection: 'row',
-    paddingHorizontal: 12,
-    paddingTop: 4,
-  },
-  card: {
-    width: 130,
-    height: height * 0.18,
-    marginHorizontal: 4,
-    padding: 8,
-    borderRadius: 12,
-    backgroundColor: '#F5F5F5',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-  },
-  cardUncollected: {
-    opacity: 0.5,
-  },
-  cardImage: {
-    width: '100%',
-    height: height * 0.12,
-    marginBottom: 4,
-  },
-  cardTitle: {
-    fontSize: 16,
-    fontWeight: '500',
-  },
-  cardTitleUncollected: {
-    color: '#666666',
-  },
-  modalContainer: {
-    flex: 1,
-    backgroundColor: 'rgba(0, 0, 0, 0.7)',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  cardModal: {
-    width: '85%',
-    backgroundColor: 'white',
-    borderRadius: 16,
-    overflow: 'hidden',
-    maxHeight: '80%',
-  },
-  cardModalHeader: {
-    alignItems: 'flex-start',
-    paddingVertical: 8,
-    paddingHorizontal: 16,
-    borderBottomWidth: 1,
-    borderBottomColor: '#EEEEEE',
-    backgroundColor: '#FFFFFF',
-  },
-  shopifyLogo: {
-    width: 100,
-    height: 28,
-  },
-  cardModalImage: {
-    width: '100%',
-    height: 300,
-    backgroundColor: '#F5F5F5',
-  },
-  cardModalInfo: {
-    padding: 16,
-  },
-  cardModalTitle: {
-    fontSize: 20,
-    fontWeight: 'bold',
-    marginBottom: 8,
-  },
-  cardModalDescription: {
-    fontSize: 16,
-    color: '#666666',
-    marginBottom: 12,
-  },
-  cardModalPrice: {
-    fontSize: 18,
-    fontWeight: '600',
-    marginBottom: 16,
-  },
-  cardModalButton: {
-    backgroundColor: '#008060',
-    padding: 16,
-    borderRadius: 8,
-    alignItems: 'center',
-  },
-  cardModalButtonText: {
-    color: '#FFFFFF',
-    fontSize: 16,
-    fontWeight: '500',
-  },
-})
