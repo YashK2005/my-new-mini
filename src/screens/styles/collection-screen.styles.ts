@@ -89,7 +89,7 @@ export const collectionScreenStyles = StyleSheet.create({
       justifyContent: 'space-between',
     },
     cardUncollected: {
-      opacity: 0.5,
+      opacity: 0.3,
     },
     cardImage: {
       width: '100%',
