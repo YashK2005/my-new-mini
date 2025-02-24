@@ -1,7 +1,8 @@
 export interface ProductCard {
   id: string
   title: string
-  image: string
+  cardImage: number
+  productImage: string
   productId: string
   category: 'music' | 'gaming' | 'clothing'
   isCollected: boolean

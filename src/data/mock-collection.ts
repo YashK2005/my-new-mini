@@ -5,7 +5,8 @@ export const mockCollectionCards: ProductCard[] = [
   {
     id: '1',
     title: 'Gaming Headset',
-    image: 'https://cdn.shopify.com/s/files/1/0092/3828/2340/products/gtracing-gaming-headset-k8-ru01-blue-28873025224784.jpg?v=1695609592&width=1500',
+    cardImage: require('../assets/product_cards/gaming_headset.png'),
+    productImage: 'https://cdn.shopify.com/s/files/1/0092/3828/2340/products/gtracing-gaming-headset-k8-ru01-blue-28873025224784.jpg?v=1695609592&width=1500',
     productId: 'gid://shopify/Product/6597836308560',
     category: 'gaming',
     isCollected: false,
@@ -15,7 +16,8 @@ export const mockCollectionCards: ProductCard[] = [
   {
     id: '2',
     title: 'RGB Gaming Mouse',
-    image: 'https://cdn.shopify.com/s/files/1/0573/6962/4713/files/STORM_M808_BLACK_1_1280x960_1fbcaf49-db89-4c20-815a-92df2102d83f.jpg?v=1707242509&width=1500',
+    cardImage: require('../assets/product_cards/rgb_gaming_mouse.png'),
+    productImage: 'https://cdn.shopify.com/s/files/1/0573/6962/4713/files/STORM_M808_BLACK_1_1280x960_1fbcaf49-db89-4c20-815a-92df2102d83f.jpg?v=1707242509&width=1500',
     productId: 'gid://shopify/Product/7413775270025',
     category: 'gaming',
     isCollected: false,
@@ -25,7 +27,8 @@ export const mockCollectionCards: ProductCard[] = [
   {
     id: '3',
     title: 'Mechanical Gaming Keyboard',
-    image: 'https://cdn.shopify.com/s/files/1/0530/3248/5054/files/Se642e5d6388e43bfb51b8c7ba15d3fa4P.webp?v=1720662005&width=1500',
+    cardImage: require('../assets/product_cards/mechanical_gaming_keyboard__1_.png'),
+    productImage: 'https://cdn.shopify.com/s/files/1/0530/3248/5054/files/Se642e5d6388e43bfb51b8c7ba15d3fa4P.webp?v=1720662005&width=1500',
     productId: 'gid://shopify/Product/9557700739397',
     category: 'gaming',
     isCollected: false,
@@ -35,7 +38,8 @@ export const mockCollectionCards: ProductCard[] = [
   {
     id: '4',
     title: 'Gaming Monitor',
-    image: 'https://cdn.shopify.com/s/files/1/0475/0131/2165/files/OdysseyG3.png?v=1723205613&format=webp&width=1500',
+    cardImage: require('../assets/product_cards/gaming_monitor.png'),
+    productImage: 'https://cdn.shopify.com/s/files/1/0475/0131/2165/files/OdysseyG3.png?v=1723205613&format=webp&width=1500',
     productId: 'gid://shopify/Product/8641143275742',
     category: 'gaming',
     isCollected: false,
@@ -45,7 +49,8 @@ export const mockCollectionCards: ProductCard[] = [
   {
     id: '5',
     title: 'Gaming Chair',
-    image: 'https://cdn.shopify.com/s/files/1/1905/8627/files/RTA-TS92-BLU-LS.jpg?v=1686930532&width=1500',
+    cardImage: require('../assets/product_cards/gaming_chair.png'),
+    productImage: 'https://cdn.shopify.com/s/files/1/1905/8627/files/RTA-TS92-BLU-LS.jpg?v=1686930532&width=1500',
     productId: 'gid://shopify/Product/2151158644825',
     category: 'gaming',
     isCollected: true,
@@ -55,7 +60,8 @@ export const mockCollectionCards: ProductCard[] = [
   {
     id: '6',
     title: 'Gaming PC',
-    image: 'https://cdn.shopify.com/s/files/1/0825/1549/3159/files/cyclonia_1_y6aalx.jpg?v=1698350800&width=1500',
+    cardImage: require('../assets/product_cards/gaming_pc.png'),
+    productImage: 'https://cdn.shopify.com/s/files/1/0825/1549/3159/files/cyclonia_1_y6aalx.jpg?v=1698350800&width=1500',
     productId: 'gid://shopify/Product/8789695988007',
     category: 'gaming',
     isCollected: true,
@@ -65,7 +71,8 @@ export const mockCollectionCards: ProductCard[] = [
   {
     id: '7',
     title: 'Xbox Series X Gaming Console',
-    image: 'https://cdn.shopify.com/s/files/1/0711/4342/4233/files/240_86fd25a7-7a3a-414b-8920-0f1944a96eef.jpg?v=1731023797&width=1500',
+    cardImage: require('../assets/product_cards/xbox_series_x_console.png'),
+    productImage: 'https://cdn.shopify.com/s/files/1/0711/4342/4233/files/240_86fd25a7-7a3a-414b-8920-0f1944a96eef.jpg?v=1731023797&width=1500',
     productId: 'gid://shopify/Product/8767905825001',
     category: 'gaming',
     isCollected: false,
@@ -75,7 +82,8 @@ export const mockCollectionCards: ProductCard[] = [
   {
     id: '8',
     title: 'Xbox Controller',
-    image: 'https://cdn.shopify.com/s/files/1/0094/5232/2897/files/Screenshot2025-01-19at1.07.08PM.png?v=1737310103&format=webp&width=1500',
+    cardImage: require('../assets/product_cards/xbox_controller.png'),
+    productImage: 'https://cdn.shopify.com/s/files/1/0094/5232/2897/files/Screenshot2025-01-19at1.07.08PM.png?v=1737310103&format=webp&width=1500',
     productId: 'gid://shopify/Product/7947020566717',
     category: 'gaming',
     isCollected: false,
@@ -87,7 +95,8 @@ export const mockCollectionCards: ProductCard[] = [
   {
     id: '9',
     title: 'Go Air Pop Wireless Earbuds',
-    image: 'https://cdn.shopify.com/s/files/1/0240/9337/files/JLab-GO-Air-Pop-True-Wireless-Earbuds-Black-Front.jpg?v=1713222359&width=1500',
+    cardImage: require('../assets/product_cards/wireless_earbuds.png'),
+    productImage: 'https://cdn.shopify.com/s/files/1/0240/9337/files/JLab-GO-Air-Pop-True-Wireless-Earbuds-Black-Front.jpg?v=1713222359&width=1500',
     productId: 'gid://shopify/Product/6558687690824',
     category: 'music',
     isCollected: false,
@@ -97,7 +106,8 @@ export const mockCollectionCards: ProductCard[] = [
   {
     id: '10',
     title: 'Wireless On-Ear Headphones',
-    image: 'https://cdn.shopify.com/s/files/1/0094/5232/2897/files/e321794_kb0.jpg?v=1729501892&width=1500',
+    cardImage: require('../assets/product_cards/wireless_on_ear_headphones.png'),
+    productImage: 'https://cdn.shopify.com/s/files/1/0094/5232/2897/files/e321794_kb0.jpg?v=1729501892&width=1500',
     productId: 'gid://shopify/Product/7901180166333',
     category: 'music',
     isCollected: false,
@@ -107,7 +117,8 @@ export const mockCollectionCards: ProductCard[] = [
   {
     id: '11',
     title: 'Boom Portable Speaker',
-    image: 'https://cdn.shopify.com/s/files/1/0823/9185/9515/files/n62435299958.jpg?v=1735606736&width=1500',
+    cardImage: require('../assets/product_cards/boom_portable.png'),
+    productImage: 'https://cdn.shopify.com/s/files/1/0823/9185/9515/files/n62435299958.jpg?v=1735606736&width=1500',
     productId: 'gid://shopify/Product/9693595238715',
     category: 'music',
     isCollected: false,
@@ -117,7 +128,8 @@ export const mockCollectionCards: ProductCard[] = [
   {
     id: '12',
     title: 'Vinyl Record Player',
-    image: 'https://cdn.shopify.com/s/files/1/0758/8135/files/71nP616X1hL.jpg?v=1733450873&width=1500',
+    cardImage: require('../assets/product_cards/vinyl_record_player.png'),
+    productImage: 'https://cdn.shopify.com/s/files/1/0758/8135/files/71nP616X1hL.jpg?v=1733450873&width=1500',
     productId: 'gid://shopify/Product/7957994668132',
     category: 'music',
     isCollected: false,
@@ -127,7 +139,8 @@ export const mockCollectionCards: ProductCard[] = [
   {
     id: '13',
     title: 'MPK 37-Key Keyboard',
-    image: 'https://cdn.shopify.com/s/files/1/0750/9049/3723/files/ad34_mpkminiplus_side_top_media.png?v=1692044617&format=webp&width=1500',
+    cardImage: require('../assets/product_cards/37_key_mini_keyboard.png'),
+    productImage: 'https://cdn.shopify.com/s/files/1/0750/9049/3723/files/ad34_mpkminiplus_side_top_media.png?v=1692044617&format=webp&width=1500',
     productId: 'gid://shopify/Product/8493061538075',
     category: 'music',
     isCollected: false,
@@ -137,7 +150,8 @@ export const mockCollectionCards: ProductCard[] = [
   {
     id: '14',
     title: 'Vinyl Record - Birds In The Trap Sing McKnight',
-    image: 'https://cdn.shopify.com/s/files/1/0704/2026/7313/files/8258497249585_85quality_Travis_Scott_Birds_In_The_Trap_Sing_McKnight_vinyl.webp?v=1734325783&width=1500',
+    cardImage: require('../assets/product_cards/birds_in_the_trap_sing_McKnight.png'),
+    productImage: 'https://cdn.shopify.com/s/files/1/0704/2026/7313/files/8258497249585_85quality_Travis_Scott_Birds_In_The_Trap_Sing_McKnight_vinyl.webp?v=1734325783&width=1500',
     productId: 'gid://shopify/Product/8258497249585',
     category: 'music',
     isCollected: false,
@@ -147,7 +161,8 @@ export const mockCollectionCards: ProductCard[] = [
   {
     id: '15',
     title: 'DJ Controller',
-    image: 'https://cdn.shopify.com/s/files/1/0054/9466/9382/products/Numark_MixtrackPlatinumFX_ortho_web.jpg?v=1606449200&width=1500',
+    cardImage: require('../assets/product_cards/dj_controller.png'),
+    productImage: 'https://cdn.shopify.com/s/files/1/0054/9466/9382/products/Numark_MixtrackPlatinumFX_ortho_web.jpg?v=1606449200&width=1500',
     productId: 'gid://shopify/Product/4617090891855',
     category: 'music',
     isCollected: true,
@@ -159,7 +174,8 @@ export const mockCollectionCards: ProductCard[] = [
   {
     id: '16',
     title: 'Jordan 4 Red Cement',
-    image: 'https://cdn.shopify.com/s/files/1/0605/5595/2386/files/redcement.png?v=1691762521&format=webp&width=1500',
+    cardImage: require('../assets/product_cards/jordan_4_cement.png'),
+    productImage: 'https://cdn.shopify.com/s/files/1/0605/5595/2386/files/redcement.png?v=1691762521&format=webp&width=1500',
     productId: 'gid://shopify/Product/8097072677122',
     category: 'clothing',
     isCollected: false,
@@ -169,7 +185,8 @@ export const mockCollectionCards: ProductCard[] = [
   {
     id: '17',
     title: 'Team Canada Hockey Jersey',
-    image: 'https://cdn.shopify.com/s/files/1/0280/9967/4194/files/Canada-2025-4-Nations-FaceOff-Limied-Nation-Team-Limied-Edition-Jersey-3.jpg?v=1738343540&width=1500',
+    cardImage: require('../assets/product_cards/team_canada_hockey_jersey.png'),
+    productImage: 'https://cdn.shopify.com/s/files/1/0280/9967/4194/files/Canada-2025-4-Nations-FaceOff-Limied-Nation-Team-Limied-Edition-Jersey-3.jpg?v=1738343540&width=1500',
     productId: 'gid://shopify/Product/7423829246034',
     category: 'clothing',
     isCollected: true,
@@ -179,7 +196,8 @@ export const mockCollectionCards: ProductCard[] = [
   {
     id: '18',
     title: 'Graphic T-Shirt',
-    image: 'https://cdn.shopify.com/s/files/1/0442/3689/8463/products/10.._8e73f223-b697-4d11-9b5c-6b881bd09bba.jpg?v=1676599614&width=1500',
+    cardImage: require('../assets/product_cards/graphic_t_shirt.png'),
+    productImage: 'https://cdn.shopify.com/s/files/1/0442/3689/8463/products/10.._8e73f223-b697-4d11-9b5c-6b881bd09bba.jpg?v=1676599614&width=1500',
     productId: 'gid://shopify/Product/8141272154368',
     category: 'clothing',
     isCollected: false,
@@ -189,7 +207,8 @@ export const mockCollectionCards: ProductCard[] = [
   {
     id: '19',
     title: 'UWaterloo Hoodie',
-    image: 'https://cdn.shopify.com/s/files/1/0055/2140/8113/products/image_30b04527-b6bc-4a46-83ca-3ad6e687dec5.heic?v=1673555500&width=1500',
+    cardImage: require('../assets/product_cards/uwaterloo_hoodie.png'),
+    productImage: 'https://cdn.shopify.com/s/files/1/0055/2140/8113/products/image_30b04527-b6bc-4a46-83ca-3ad6e687dec5.heic?v=1673555500&width=1500',
     productId: 'gid://shopify/Product/8179899367729',
     category: 'clothing',
     isCollected: true,
@@ -199,7 +218,8 @@ export const mockCollectionCards: ProductCard[] = [
   {
     id: '20',
     title: 'Jeans',
-    image: 'https://cdn.shopify.com/s/files/1/0108/7802/files/ATP03308-Edit.jpg?v=1726991836&width=1500',
+    cardImage: require('../assets/product_cards/Jeans.png'),
+    productImage: 'https://cdn.shopify.com/s/files/1/0108/7802/files/ATP03308-Edit.jpg?v=1726991836&width=1500',
     productId: 'gid://shopify/Product/1373978165341',
     category: 'clothing',
     isCollected: false,
@@ -209,7 +229,8 @@ export const mockCollectionCards: ProductCard[] = [
   {
     id: '21',
     title: 'Blue Jays Baseball Cap',
-    image: 'https://cdn.shopify.com/s/files/1/2119/2683/products/NewEra59FiftyAuthenticCollectionTorontoBlueJaysGameQuaterLeft.jpg?v=1650931160&width=1500',
+    cardImage: require('../assets/product_cards/blue_jays_baseball_cap.png'),
+    productImage: 'https://cdn.shopify.com/s/files/1/2119/2683/products/NewEra59FiftyAuthenticCollectionTorontoBlueJaysGameQuaterLeft.jpg?v=1650931160&width=1500',
     productId: 'gid://shopify/Product/11077744266',
     category: 'clothing',
     isCollected: true,
@@ -219,7 +240,8 @@ export const mockCollectionCards: ProductCard[] = [
   {
     id: '22',
     title: 'Arcteryx Jacket',
-    image: 'https://cdn.shopify.com/s/files/1/0078/0333/8829/files/Arcteryx-Beta-Insulated-Jacket-Men-s_BLKSAPPH_1.png?v=1727998098&format=webp&width=1500',
+    cardImage: require('../assets/product_cards/arcteryx_jacket.png'),
+    productImage: 'https://cdn.shopify.com/s/files/1/0078/0333/8829/files/Arcteryx-Beta-Insulated-Jacket-Men-s_BLKSAPPH_1.png?v=1727998098&format=webp&width=1500',
     productId: 'gid://shopify/Product/8492673794279',
     category: 'clothing',
     isCollected: false,

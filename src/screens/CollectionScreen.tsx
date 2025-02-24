@@ -114,7 +114,7 @@ const CategorySection = ({
                 style={[styles.card, !card.isCollected && styles.cardUncollected]}
               >
                 <Image
-                  source={{uri: card.image}}
+                  source={{uri: card.productImage}}
                   style={styles.cardImage}
                   resizeMode="contain"
                 />
@@ -206,36 +206,22 @@ export function CollectionScreen() {
             activeOpacity={1}
             onPress={(e) => e.stopPropagation()}
           >
-            <View style={styles.cardModalHeader}>
-              <Image
-                source={require('../assets/shopify-logo.png')}
-                style={styles.shopifyLogo}
-                resizeMode="contain"
-              />
-            </View>
-            
             {selectedCard && (
               <>
                 <Image
-                  source={{uri: selectedCard.image}}
+                  source={selectedCard.cardImage}
                   style={styles.cardModalImage}
                   resizeMode="contain"
                 />
-                <View style={styles.cardModalInfo}>
-                  <Text style={styles.cardModalTitle}>{selectedCard.title}</Text>
-                  <Text style={styles.cardModalDescription}>{selectedCard.description}</Text>
-                  <Text style={styles.cardModalPrice}>{selectedCard.price}</Text>
-                  
-                  <TouchableOpacity
-                    onPress={() => {
-                      navigateToProduct({productId: selectedCard.productId})
-                      setSelectedCard(null)
-                    }}
-                    style={styles.cardModalButton}
-                  >
-                    <Text style={styles.cardModalButtonText}>View Product</Text>
-                  </TouchableOpacity>
-                </View>
+                <TouchableOpacity
+                  onPress={() => {
+                    navigateToProduct({productId: selectedCard.productId})
+                    setSelectedCard(null)
+                  }}
+                  style={styles.cardModalButton}
+                >
+                  <Text style={styles.cardModalButtonText}>View Product</Text>
+                </TouchableOpacity>
               </>
             )}
           </TouchableOpacity>

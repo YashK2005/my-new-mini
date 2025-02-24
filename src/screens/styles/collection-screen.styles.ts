@@ -115,6 +115,7 @@ export const collectionScreenStyles = StyleSheet.create({
       borderRadius: 16,
       overflow: 'hidden',
       maxHeight: '80%',
+      justifyContent: 'center',
     },
     cardModalHeader: {
       alignItems: 'flex-start',
@@ -130,8 +131,11 @@ export const collectionScreenStyles = StyleSheet.create({
     },
     cardModalImage: {
       width: '100%',
-      height: 300,
+      height: undefined,
+      aspectRatio: 745/1040,
       backgroundColor: '#F5F5F5',
+      alignSelf: 'center',
+      maxHeight: '80%',
     },
     cardModalInfo: {
       padding: 16,
@@ -156,6 +160,9 @@ export const collectionScreenStyles = StyleSheet.create({
       padding: 16,
       borderRadius: 8,
       alignItems: 'center',
+      marginTop: 16,
+      marginHorizontal: 16,
+      marginBottom: 8,
     },
     cardModalButtonText: {
       color: '#FFFFFF',
