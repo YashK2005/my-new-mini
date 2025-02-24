@@ -27,7 +27,7 @@ export const mockCollectionCards: ProductCard[] = [
   {
     id: '3',
     title: 'Mechanical Gaming Keyboard',
-    cardImage: require('../assets/product_cards/mechanical_gaming_keyboard__1_.png'),
+    cardImage: require('../assets/product_cards/mechanical_gaming_keyboard.png'),
     productImage: 'https://cdn.shopify.com/s/files/1/0530/3248/5054/files/Se642e5d6388e43bfb51b8c7ba15d3fa4P.webp?v=1720662005&width=1500',
     productId: 'gid://shopify/Product/9557700739397',
     category: 'gaming',
@@ -117,7 +117,7 @@ export const mockCollectionCards: ProductCard[] = [
   {
     id: '11',
     title: 'Boom Portable Speaker',
-    cardImage: require('../assets/product_cards/boom_portable.png'),
+    cardImage: require('../assets/product_cards/boom_portable_speaker.png'),
     productImage: 'https://cdn.shopify.com/s/files/1/0823/9185/9515/files/n62435299958.jpg?v=1735606736&width=1500',
     productId: 'gid://shopify/Product/9693595238715',
     category: 'music',
@@ -174,7 +174,7 @@ export const mockCollectionCards: ProductCard[] = [
   {
     id: '16',
     title: 'Jordan 4 Red Cement',
-    cardImage: require('../assets/product_cards/jordan_4_cement.png'),
+    cardImage: require('../assets/product_cards/jordan_4_red_cement.png'),
     productImage: 'https://cdn.shopify.com/s/files/1/0605/5595/2386/files/redcement.png?v=1691762521&format=webp&width=1500',
     productId: 'gid://shopify/Product/8097072677122',
     category: 'clothing',
@@ -218,7 +218,7 @@ export const mockCollectionCards: ProductCard[] = [
   {
     id: '20',
     title: 'Jeans',
-    cardImage: require('../assets/product_cards/Jeans.png'),
+    cardImage: require('../assets/product_cards/jeans.png'),
     productImage: 'https://cdn.shopify.com/s/files/1/0108/7802/files/ATP03308-Edit.jpg?v=1726991836&width=1500',
     productId: 'gid://shopify/Product/1373978165341',
     category: 'clothing',
