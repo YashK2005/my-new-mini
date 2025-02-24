@@ -32,6 +32,10 @@ export function PackRevealScreen() {
     
     const numCards = type === 'legendary' ? 4 : type === 'rare' ? 3 : 2
     const numCardsToSelect = Math.min(numCards, availableCards.length)
+    if (numCardsToSelect === 0) {
+      console.log('No cards available')
+      return
+    }
     
     const selectedCards = [...availableCards]
       .sort(() => Math.random() - 0.5)
@@ -78,7 +82,7 @@ export function PackRevealScreen() {
               autoPlay={false}
             />
           ) : (
-            <Text>Loading cards...</Text>
+            <Text>You have collected all cards for this pack!</Text>
           )}
         </View>
       </SafeAreaView>

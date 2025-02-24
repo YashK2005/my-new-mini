@@ -18,7 +18,7 @@ interface Pack {
   id: string;
   image: any;
   name: string;
-  category: string;
+  category: "gaming" | "music" | "clothing";
   type: 'common' | 'rare' | 'legendary';
   quantity: number;
 }
@@ -33,7 +33,7 @@ export function PackOpeningScreen() {
   const [packs] = useState<Pack[]>([
     { 
       id: '1', 
-      image: require('../assets/pack1.png'), 
+      image: require('../assets/packs/gaming_pack.png'), 
       name: 'Shop Gaming Pack',
       category: 'gaming',
       type: 'legendary',
@@ -41,7 +41,7 @@ export function PackOpeningScreen() {
     },
     { 
       id: '2', 
-      image: require('../assets/pack1.png'), 
+      image: require('../assets/packs/music_pack.png'), 
       name: 'Shop Music Pack',
       category: 'music',
       type: 'rare',
@@ -49,10 +49,10 @@ export function PackOpeningScreen() {
     },
     { 
       id: '3', 
-      image: require('../assets/pack1.png'), 
+      image: require('../assets/packs/clothing_pack.png'), 
       name: 'Shop Fashion Pack',
       category: 'clothing',
-      type: 'common',
+      type: 'rare',
       quantity: 3
     },
   ])
