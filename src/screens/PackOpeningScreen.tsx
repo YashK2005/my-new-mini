@@ -78,7 +78,7 @@ export function PackOpeningScreen() {
         resizeMode="contain"
       />
       <View style={styles.packInfo}>
-        <Text style={styles.packQuantity}>Quantity: {item.quantity}</Text>
+        {/* <Text style={styles.packQuantity}>Quantity: {item.quantity}</Text> */}
         <PressableAnimated
           onPress={() => handleOpenPack(item)}
           style={[
@@ -206,6 +206,7 @@ const styles = StyleSheet.create({
     borderRadius: 16,
     alignItems: 'center',
     marginBottom: 24,
+    marginTop: 24,
     shadowColor: '#000',
     shadowOffset: {width: 0, height: 2},
     shadowOpacity: 0.1,
