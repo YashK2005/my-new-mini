@@ -1,3 +1,5 @@
+Team: [Kenneth Ye](https://github.com/Kenneth-Ye), [Owen Zhang](https://github.com/owenz0523), [Yash Kothari](https://github.com/YashK2005)
+
 # ShoPacks - A Shopify Mini App
 
 ShoPacks is a gamified shopping experience that combines the thrill of collecting trading cards with Shopify products. Think Pokémon Trading Card Game meets e-commerce!
