@@ -1,9 +1,10 @@
-import {createNativeStackNavigator} from '@react-navigation/native-stack'
+import { createNativeStackNavigator } from '@react-navigation/native-stack'
 
-import {HomeScreen} from './screens/HomeScreen'
-import {ShareScreen} from './screens/ShareScreen'
-import {CollectionScreen} from './screens/CollectionScreen'
-import {PackOpeningScreen} from './screens/PackOpeningScreen'
+import { HomeScreen } from './screens/HomeScreen'
+import { ShareScreen } from './screens/ShareScreen'
+import { CollectionScreen } from './screens/CollectionScreen'
+import { PackOpeningScreen } from './screens/PackOpeningScreen'
+import { PackRevealScreen } from './screens/PackRevealScreen'
 
 const Stack = createNativeStackNavigator()
 
@@ -28,6 +29,11 @@ export function App() {
       <Stack.Screen
         name="Collection"
         component={CollectionScreen}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="PackReveal"
+        component={PackRevealScreen}
         options={{headerShown: false}}
       />
     </Stack.Navigator>

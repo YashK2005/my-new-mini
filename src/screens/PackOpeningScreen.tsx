@@ -11,25 +11,31 @@ import {
 } from '@shopify/shop-minis-platform-sdk'
 import Carousel from 'react-native-reanimated-carousel'
 import {useNavigation} from '@react-navigation/native'
+import {NativeStackNavigationProp} from '@react-navigation/native-stack'
+import {RootStackParamList} from '../types/screens'
 
 interface Pack {
   id: string;
   image: any;
   name: string;
+  category: string;
   type: 'common' | 'rare' | 'legendary';
   quantity: number;
 }
 
+type NavigationProp = NativeStackNavigationProp<RootStackParamList, 'PackOpening'>;
+
 export function PackOpeningScreen() {
   const theme = useTheme()
   const width = Dimensions.get('window').width
-  const navigation = useNavigation()
+  const navigation = useNavigation<NavigationProp>()
   
   const [packs] = useState<Pack[]>([
     { 
       id: '1', 
       image: require('../assets/pack1.png'), 
       name: 'Shop Gaming Pack',
+      category: 'gaming',
       type: 'legendary',
       quantity: 2
     },
@@ -37,6 +43,7 @@ export function PackOpeningScreen() {
       id: '2', 
       image: require('../assets/pack1.png'), 
       name: 'Shop Music Pack',
+      category: 'music',
       type: 'rare',
       quantity: 1
     },
@@ -44,6 +51,7 @@ export function PackOpeningScreen() {
       id: '3', 
       image: require('../assets/pack1.png'), 
       name: 'Shop Fashion Pack',
+      category: 'fashion',
       type: 'common',
       quantity: 3
     },
@@ -54,8 +62,10 @@ export function PackOpeningScreen() {
 
   const handleOpenPack = (pack: Pack) => {
     if (pack.quantity > 0) {
-      // Handle pack opening logic here
-      console.log(`Opening ${pack.name}`)
+      navigation.navigate('PackReveal', {
+        category: pack.category,
+        type: pack.type
+      })
     }
   }
 
@@ -108,6 +118,7 @@ export function PackOpeningScreen() {
       <View style={styles.carouselContainer}>
         <Carousel
           data={packs}
+          loop={false}
           renderItem={renderPackCard}
           width={width}
           height={width * 1.5}
@@ -116,7 +127,6 @@ export function PackOpeningScreen() {
             snapDirection: 'left',
             stackInterval: 25,
           }}
-          autoPlay={false}
         />
       </View>
     </SafeAreaView>
