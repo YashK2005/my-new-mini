@@ -78,7 +78,6 @@ export function PackOpeningScreen() {
         resizeMode="contain"
       />
       <View style={styles.packInfo}>
-        {/* <Text style={styles.packQuantity}>Quantity: {item.quantity}</Text> */}
         <PressableAnimated
           onPress={() => handleOpenPack(item)}
           style={[
@@ -110,9 +109,6 @@ export function PackOpeningScreen() {
           accessibilityLabel="Go back"
         />
         <Text style={styles.headerText}>Your Packs</Text>
-        <Text style={styles.headerCounter}>
-          {uniquePacksOwned}/{totalPackTypes}
-        </Text>
       </View>
 
       <View style={styles.carouselContainer}>
