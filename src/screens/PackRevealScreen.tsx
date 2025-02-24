@@ -5,22 +5,25 @@ import {
   Text,
   IconButton
 } from '@shopify/shop-minis-platform-sdk'
-import {useNavigation, useRoute} from '@react-navigation/native'
+import {useNavigation, useRoute, RouteProp} from '@react-navigation/native'
 import {mockCollectionCards} from '../data/mock-collection'
 import {ProductCard as ProductCardType} from '../types/collection'
 import Carousel from 'react-native-reanimated-carousel'
+import {RootStackParamList} from '../types/screens'
+
+type PackRevealScreenRouteProp = RouteProp<RootStackParamList, 'PackReveal'>
 
 export function PackRevealScreen() {
   const navigation = useNavigation()
-  const route = useRoute()
-  const {category, type} = route.params as {category: string; type: string}
+  const route = useRoute<PackRevealScreenRouteProp>()
+  const {category, type} = route.params
   const [revealedCards, setRevealedCards] = useState<ProductCardType[]>([])
 
   useEffect(() => {
     const categoryCards = mockCollectionCards.filter(card => card.category === category)
+    
     const numCards = type === 'legendary' ? 4 : type === 'rare' ? 3 : 2
     
-    // Randomly select cards from the category
     const selectedCards = [...categoryCards]
       .sort(() => Math.random() - 0.5)
       .slice(0, numCards)
@@ -44,20 +47,24 @@ export function PackRevealScreen() {
       </View>
 
       <View style={styles.content}>
-        <Carousel
-          data={revealedCards}
-          renderItem={({item}) => (
-            <Image 
-              source={item.cardImage as unknown as number}
-              style={styles.cardImage}
-              resizeMode="contain"
-            />
-          )}
-          width={width}
-          height={width * 1.5}
-          loop={false}
-          autoPlay={false}
-        />
+        {revealedCards.length > 0 ? (
+          <Carousel
+            data={revealedCards}
+            renderItem={({item}) => (
+              <Image 
+                source={item.cardImage}
+                style={styles.cardImage}
+                resizeMode="contain"
+              />
+            )}
+            width={width}
+            height={width * 1.5}
+            loop={false}
+            autoPlay={false}
+          />
+        ) : (
+          <Text>Loading cards...</Text>
+        )}
       </View>
     </SafeAreaView>
   )

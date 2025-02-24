@@ -5,4 +5,8 @@ export interface RootStackParamList extends ParamListBase {
   'Share': undefined
   'Collection': undefined
   'PackOpening': undefined
+  'PackReveal': {
+    category: string
+    type: 'common' | 'rare' | 'legendary'
+  }
 }
