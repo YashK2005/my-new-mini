@@ -137,7 +137,7 @@ export function CollectionScreen() {
   const navigation = useNavigation()
   const {navigateToProduct} = useShopNavigation()
   const [selectedCard, setSelectedCard] = useState<ProductCard | null>(null)
-  const {collectedCardIds} = useCollectedCards()
+  const {collectedCardIds, clearCollectedCards} = useCollectedCards()
 
   // Modify allCards to include isCollected based on collectedCardIds
   const allCards = useMemo(() => {

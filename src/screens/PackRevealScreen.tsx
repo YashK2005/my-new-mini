@@ -24,30 +24,29 @@ export function PackRevealScreen() {
   const hasAddedCards = useRef(false)
 
   useEffect(() => {
-    if (hasAddedCards.current) return
-    
-    const availableCards = mockCollectionCards.filter(card => 
-      card.category === category && !collectedCardIds.includes(card.id)
-    )
-    
-    const numCards = type === 'legendary' ? 4 : type === 'rare' ? 3 : 2
-    const numCardsToSelect = Math.min(numCards, availableCards.length)
-    if (numCardsToSelect === 0) {
-      console.log('No cards available')
-      return
+    async function addCards() {
+      if (hasAddedCards.current) return
+      
+      const availableCards = mockCollectionCards.filter(card => 
+        card.category === category && !collectedCardIds.includes(card.id)
+      )
+      
+      const numCards = type === 'legendary' ? 4 : type === 'rare' ? 3 : 2
+      const numCardsToSelect = Math.min(numCards, availableCards.length)
+      
+      const selectedCards = [...availableCards]
+        .sort(() => Math.random() - 0.5)
+        .slice(0, numCardsToSelect)
+      
+      // Save cards first
+      await Promise.all(selectedCards.map(card => addCollectedCard(card.id)))
+      
+      // Only set revealed cards after successful save
+      setRevealedCards(selectedCards)
+      hasAddedCards.current = true
     }
-    
-    const selectedCards = [...availableCards]
-      .sort(() => Math.random() - 0.5)
-      .slice(0, numCardsToSelect)
-    
-    setRevealedCards(selectedCards)
-    
-    selectedCards.forEach(card => {
-      addCollectedCard(card.id)
-    })
 
-    hasAddedCards.current = true
+    addCards()
   }, [category, type, collectedCardIds])
 
   const width = Dimensions.get('window').width

@@ -21,6 +21,16 @@ export function useCollectedCards() {
     }
   }
 
+  const clearCollectedCards = async () => {
+    try {
+      await AsyncStorage.removeItem(STORAGE_KEY)
+      setCollectedCardIds([])
+    } catch (error) {
+      console.error('Error clearing collected cards:', error)
+    }
+  }
+  
+
   const addCollectedCard = async (cardId: string) => {
     try {
       // First get existing cards
@@ -41,5 +51,6 @@ export function useCollectedCards() {
   return {
     collectedCardIds,
     addCollectedCard,
+    clearCollectedCards,
   }
 } 
