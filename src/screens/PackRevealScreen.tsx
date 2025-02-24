@@ -1,4 +1,4 @@
-import {useState, useEffect} from 'react'
+import {useState, useEffect, useRef} from 'react'
 import {StyleSheet, View, Dimensions, Image} from 'react-native'
 import {
   SafeAreaView,
@@ -21,16 +21,16 @@ export function PackRevealScreen() {
   const {category, type} = route.params
   const [revealedCards, setRevealedCards] = useState<ProductCardType[]>([])
   const {addCollectedCard, collectedCardIds} = useCollectedCards()
+  const hasAddedCards = useRef(false)
 
   useEffect(() => {
-    // Filter cards by category AND not already collected
+    if (hasAddedCards.current) return
+    
     const availableCards = mockCollectionCards.filter(card => 
       card.category === category && !collectedCardIds.includes(card.id)
     )
     
     const numCards = type === 'legendary' ? 4 : type === 'rare' ? 3 : 2
-    
-    // If we have fewer available cards than requested, use all available cards
     const numCardsToSelect = Math.min(numCards, availableCards.length)
     
     const selectedCards = [...availableCards]
@@ -42,6 +42,8 @@ export function PackRevealScreen() {
     selectedCards.forEach(card => {
       addCollectedCard(card.id)
     })
+
+    hasAddedCards.current = true
   }, [category, type, collectedCardIds])
 
   const width = Dimensions.get('window').width
