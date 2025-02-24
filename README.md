@@ -1,9 +1,11 @@
-# Shopidex - A Shopify Mini App
+# ShoPacks - A Shopify Mini App
 
-Shopidex is a gamified shopping experience that combines the thrill of collecting trading cards with Shopify products. Think Pokémon Trading Card Game meets e-commerce!
+ShoPacks is a gamified shopping experience that combines the thrill of collecting trading cards with Shopify products. Think Pokémon Trading Card Game meets e-commerce!
+
+In an era where collecting Pokémon cards is making a massive comeback and Pokémon cards are reaching record popularity, ShoPacks transforms everyday shopping into an engaging collecting experience. We're solving the challenge of passive product browsing by giving users a compelling reason to discover and engage with products - building their digital collection while they shop. This not only drives brand awareness and product discovery but creates a vibrant community of collectors who share, trade, and showcase their unique product card collections.
 
 ### Demo: 
-[Watch Demo Video](https://www.example.com) - See Shopidex in action!
+[Watch Demo Video](https://share.descript.com/view/NravE4R5bVV) - See ShoPacks in action!
 
 ## 🎮 Features
 
@@ -64,7 +66,7 @@ npm install
 
 2. Run the app:
 ```bash
-npm run start
+npm start
 ```
 
 
