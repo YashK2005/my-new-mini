@@ -51,7 +51,7 @@ export function PackOpeningScreen() {
       id: '3', 
       image: require('../assets/pack1.png'), 
       name: 'Shop Fashion Pack',
-      category: 'fashion',
+      category: 'clothing',
       type: 'common',
       quantity: 3
     },
