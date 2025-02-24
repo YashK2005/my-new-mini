@@ -57,9 +57,6 @@ export function PackOpeningScreen() {
     },
   ])
 
-  const uniquePacksOwned = packs.filter(pack => pack.quantity > 0).length
-  const totalPackTypes = packs.length
-
   const handleOpenPack = (pack: Pack) => {
     if (pack.quantity > 0) {
       navigation.navigate('PackReveal', {
