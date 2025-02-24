@@ -141,6 +141,7 @@ export function CollectionScreen() {
 
   // Modify allCards to include isCollected based on collectedCardIds
   const allCards = useMemo(() => {
+    // clearCollectedCards()
     return mockCollectionCards.map(card => ({
       ...card,
       isCollected: collectedCardIds.includes(card.id)

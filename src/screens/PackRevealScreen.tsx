@@ -39,7 +39,10 @@ export function PackRevealScreen() {
         .slice(0, numCardsToSelect)
       
       // Save cards first
-      await Promise.all(selectedCards.map(card => addCollectedCard(card.id)))
+      for (const card of selectedCards) {
+        console.log('adding card', card.id)
+        await addCollectedCard(card.id)
+      }
       
       // Only set revealed cards after successful save
       setRevealedCards(selectedCards)
@@ -47,7 +50,7 @@ export function PackRevealScreen() {
     }
 
     addCards()
-  }, [category, type, collectedCardIds])
+  }, [])
 
   const width = Dimensions.get('window').width
 
