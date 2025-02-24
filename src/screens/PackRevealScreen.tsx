@@ -10,6 +10,8 @@ import {mockCollectionCards} from '../data/mock-collection'
 import {ProductCard as ProductCardType} from '../types/collection'
 import Carousel from 'react-native-reanimated-carousel'
 import {RootStackParamList} from '../types/screens'
+import {useCollectedCards} from '../hooks/useCollectedCards'
+
 
 type PackRevealScreenRouteProp = RouteProp<RootStackParamList, 'PackReveal'>
 
@@ -18,55 +20,66 @@ export function PackRevealScreen() {
   const route = useRoute<PackRevealScreenRouteProp>()
   const {category, type} = route.params
   const [revealedCards, setRevealedCards] = useState<ProductCardType[]>([])
+  const {addCollectedCard, collectedCardIds} = useCollectedCards()
 
   useEffect(() => {
-    const categoryCards = mockCollectionCards.filter(card => card.category === category)
+    // Filter cards by category AND not already collected
+    const availableCards = mockCollectionCards.filter(card => 
+      card.category === category && !collectedCardIds.includes(card.id)
+    )
     
     const numCards = type === 'legendary' ? 4 : type === 'rare' ? 3 : 2
     
-    const selectedCards = [...categoryCards]
+    // If we have fewer available cards than requested, use all available cards
+    const numCardsToSelect = Math.min(numCards, availableCards.length)
+    
+    const selectedCards = [...availableCards]
       .sort(() => Math.random() - 0.5)
-      .slice(0, numCards)
+      .slice(0, numCardsToSelect)
     
     setRevealedCards(selectedCards)
-  }, [category, type])
+    
+    selectedCards.forEach(card => {
+      addCollectedCard(card.id)
+    })
+  }, [category, type, collectedCardIds])
 
   const width = Dimensions.get('window').width
 
   return (
-    <SafeAreaView style={styles.container}>
-      <View style={styles.header}>
-        <IconButton
-          name="reverse"
-          onPress={() => navigation.goBack()}
-          size="m"
-          accessibilityLabel="Go back"
-        />
-        <Text style={styles.headerText}>Your New Cards!</Text>
-        <View style={{width: 40}} />
-      </View>
-
-      <View style={styles.content}>
-        {revealedCards.length > 0 ? (
-          <Carousel
-            data={revealedCards}
-            renderItem={({item}) => (
-              <Image 
-                source={item.cardImage}
-                style={styles.cardImage}
-                resizeMode="contain"
-              />
-            )}
-            width={width}
-            height={width * 1.5}
-            loop={false}
-            autoPlay={false}
+      <SafeAreaView style={styles.container}>
+        <View style={styles.header}>
+          <IconButton
+            name="reverse"
+            onPress={() => navigation.goBack()}
+            size="m"
+            accessibilityLabel="Go back"
           />
-        ) : (
-          <Text>Loading cards...</Text>
-        )}
-      </View>
-    </SafeAreaView>
+          <Text style={styles.headerText}>Your New Cards!</Text>
+          <View style={{width: 40}} />
+        </View>
+
+        <View style={styles.content}>
+          {revealedCards.length > 0 ? (
+            <Carousel
+              data={revealedCards}
+              renderItem={({item}) => (
+                <Image 
+                  source={item.cardImage}
+                  style={styles.cardImage}
+                  resizeMode="contain"
+                />
+              )}
+              width={width}
+              height={width * 1.5}
+              loop={false}
+              autoPlay={false}
+            />
+          ) : (
+            <Text>Loading cards...</Text>
+          )}
+        </View>
+      </SafeAreaView>
   )
 }
 

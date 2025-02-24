@@ -1,4 +1,4 @@
-import {useState} from 'react'
+import {useState, useMemo} from 'react'
 import {
   View,
   Text,
@@ -17,6 +17,7 @@ import {mockCollectionCards} from '../data/mock-collection'
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome'
 import {faGamepad, faHeadphones, faShirt} from '@fortawesome/free-solid-svg-icons'
 import {collectionScreenStyles as styles} from './styles/collection-screen.styles'
+import {useCollectedCards} from '../hooks/useCollectedCards'
 
 
 interface CategoryHeaderProps {
@@ -136,9 +137,15 @@ export function CollectionScreen() {
   const navigation = useNavigation()
   const {navigateToProduct} = useShopNavigation()
   const [selectedCard, setSelectedCard] = useState<ProductCard | null>(null)
+  const {collectedCardIds} = useCollectedCards()
 
-  // Mock data with collected and uncollected cards
-  const allCards = mockCollectionCards
+  // Modify allCards to include isCollected based on collectedCardIds
+  const allCards = useMemo(() => {
+    return mockCollectionCards.map(card => ({
+      ...card,
+      isCollected: collectedCardIds.includes(card.id)
+    }))
+  }, [collectedCardIds])
 
   const cardsByCategory = {
     gaming: allCards.filter(card => card.category === 'gaming'),
@@ -153,80 +160,80 @@ export function CollectionScreen() {
   const totalCards = Object.values(cardsByCategory).flat().length
 
   return (
-    <SafeAreaView style={styles.container}>
-      <View style={styles.header}>
-        <View style={styles.headerLeft}>
-          <TouchableOpacity 
-            onPress={() => navigation.goBack()}
-            style={styles.backButton}
-          >
-            <Text style={styles.backButtonText}>←</Text>
-          </TouchableOpacity>
-          <Text style={styles.headerText}>Shopidex</Text>
+      <SafeAreaView style={styles.container}>
+        <View style={styles.header}>
+          <View style={styles.headerLeft}>
+            <TouchableOpacity 
+              onPress={() => navigation.goBack()}
+              style={styles.backButton}
+            >
+              <Text style={styles.backButtonText}>←</Text>
+            </TouchableOpacity>
+            <Text style={styles.headerText}>Shopidex</Text>
+          </View>
+          <Text style={styles.headerCounter}>
+            {totalCollected}/{totalCards}
+          </Text>
         </View>
-        <Text style={styles.headerCounter}>
-          {totalCollected}/{totalCards}
-        </Text>
-      </View>
 
-      <ScrollView 
-        contentContainerStyle={styles.contentContainer}
-        showsVerticalScrollIndicator={false}
-      >
-        <CategorySection 
-          title="Gaming" 
-          cards={cardsByCategory.gaming} 
-          onCardPress={setSelectedCard}
-        />
-        <CategorySection 
-          title="Music" 
-          cards={cardsByCategory.music} 
-          onCardPress={setSelectedCard}
-        />
-        <CategorySection 
-          title="Clothing" 
-          cards={cardsByCategory.clothing} 
-          onCardPress={setSelectedCard}
-        />
-      </ScrollView>
+        <ScrollView 
+          contentContainerStyle={styles.contentContainer}
+          showsVerticalScrollIndicator={false}
+        >
+          <CategorySection 
+            title="Gaming" 
+            cards={cardsByCategory.gaming} 
+            onCardPress={setSelectedCard}
+          />
+          <CategorySection 
+            title="Music" 
+            cards={cardsByCategory.music} 
+            onCardPress={setSelectedCard}
+          />
+          <CategorySection 
+            title="Clothing" 
+            cards={cardsByCategory.clothing} 
+            onCardPress={setSelectedCard}
+          />
+        </ScrollView>
 
-      <Modal
-        visible={!!selectedCard}
-        transparent
-        animationType="fade"
-        onRequestClose={() => setSelectedCard(null)}
-      >
-        <TouchableOpacity 
-          style={styles.modalContainer} 
-          activeOpacity={1}
-          onPress={() => setSelectedCard(null)}
+        <Modal
+          visible={!!selectedCard}
+          transparent
+          animationType="fade"
+          onRequestClose={() => setSelectedCard(null)}
         >
           <TouchableOpacity 
-            style={styles.cardModal}
+            style={styles.modalContainer} 
             activeOpacity={1}
-            onPress={(e) => e.stopPropagation()}
+            onPress={() => setSelectedCard(null)}
           >
-            {selectedCard && (
-              <>
-                <Image
-                  source={selectedCard.cardImage}
-                  style={styles.cardModalImage}
-                  resizeMode="contain"
-                />
-                <TouchableOpacity
-                  onPress={() => {
-                    navigateToProduct({productId: selectedCard.productId})
-                    setSelectedCard(null)
-                  }}
-                  style={styles.cardModalButton}
-                >
-                  <Text style={styles.cardModalButtonText}>View Product</Text>
-                </TouchableOpacity>
-              </>
-            )}
+            <TouchableOpacity 
+              style={styles.cardModal}
+              activeOpacity={1}
+              onPress={(e) => e.stopPropagation()}
+            >
+              {selectedCard && (
+                <>
+                  <Image
+                    source={selectedCard.cardImage}
+                    style={styles.cardModalImage}
+                    resizeMode="contain"
+                  />
+                  <TouchableOpacity
+                    onPress={() => {
+                      navigateToProduct({productId: selectedCard.productId})
+                      setSelectedCard(null)
+                    }}
+                    style={styles.cardModalButton}
+                  >
+                    <Text style={styles.cardModalButtonText}>View Product</Text>
+                  </TouchableOpacity>
+                </>
+              )}
+            </TouchableOpacity>
           </TouchableOpacity>
-        </TouchableOpacity>
-      </Modal>
-    </SafeAreaView>
+        </Modal>
+      </SafeAreaView>
   )
 }
